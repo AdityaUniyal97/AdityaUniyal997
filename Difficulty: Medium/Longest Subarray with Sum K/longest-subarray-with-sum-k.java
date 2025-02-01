@@ -33,19 +33,19 @@ class Main {
 
 class Solution {
     public int longestSubarray(int[] arr, int k) {
-        HashMap<Integer,Integer> prefixMap = new HashMap<>();
-        int sum = 0 ;
+        HashMap<Integer , Integer> prefixMap = new HashMap<>();
+        int sum= 0;
         int maxLength = 0;
-        for(int i =0 ; i < arr.length ; i++){
+        for(int i = 0; i < arr.length ; i++){
             sum += arr[i];
             if(sum == k){
                 maxLength = i + 1;
             }
             if(prefixMap.containsKey(sum - k)){
-                maxLength = Math.max(maxLength , i - prefixMap.get(sum - k));
+                maxLength = Math.max(maxLength ,i - prefixMap.get(sum - k));
             }
             if(!prefixMap.containsKey(sum)){
-                prefixMap.put(sum , i);
+                prefixMap.put(sum, i);
             }
         }
         return maxLength;
